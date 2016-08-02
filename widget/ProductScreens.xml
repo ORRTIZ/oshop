@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+(C) Copyright 2015 Somonar B.V.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+-->
+
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+    
+    <screen name="product">
+        <section>
+            <actions>
+                <set field="rightbarScreenName" value=""/>
+                <set field="MainColumnStyle" value="col-md-12"/>
+                <set field="titleProperty" value="PageTitleProductPage"/>
+                <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/>
+                <set field="configproductdetailScreen" value="component://oshop/widget/ProductScreens.xml#configproductdetail"/>
+                <script location="component://oshop/src/org/apache/ofbiz/ecommerce/product/Product.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <not><if-empty field="product"/></not>
+                            </condition>
+                            <widgets>
+                                <container id="breadcrumbs">
+                                    <include-screen location="component://oshop/widget/CatalogScreens.xml" name="breadcrumbs"/>
+                                </container>
+                                <include-screen name="${detailScreen}"/>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="head2">${uiLabelMap.ProductProductNotFound} ${productId}!</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="productdetail">
+        <section>
+            <actions>
+                <set field="productsummaryScreen" value="component://oshop/widget/ProductScreens.xml#productsummary"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/ProductDetail.groovy"/>
+            </actions>
+            <widgets>
+                <container>
+                    <platform-specific><html><html-template location="component://oshop/template/product/ProductDetail.ftl"/></html></platform-specific>
+                </container>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="inlineProductDetail">
+        <section>
+            <actions>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/InlineProductDetail.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://order/webapp/ordermgr/entry/catalog/inlineProductDetail.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="configproductdetail">
+        <section>
+            <actions>
+                <set field="productsummaryScreen" value="component://oshop/widget/ProductScreens.xml#productsummary"/>
+                <set field="inlineProductDetailScreen" value="component://oshop/widget/ProductScreens.xml#inlineProductDetail"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/ProductDetail.groovy"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/PrepareConfigForm.groovy"/>
+            </actions>
+            <widgets>
+                <container id="breadcrumbs">
+                    <include-screen location="component://oshop/widget/CatalogScreens.xml" name="breadcrumbs"/>
+                </container>
+                <container id="configproductdetail">
+                    <platform-specific><html><html-template location="component://oshop/template/product/ConfigProductDetail.ftl"/></html></platform-specific>
+                </container>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="productsummary">
+        <section>
+            <actions>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/ProductSummary.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/product/ProductSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+</screens>

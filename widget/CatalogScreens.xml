@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+(C) Copyright 2015 Somonar B.V.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+-->
+
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <!-- Column Included Screens -->
+    <screen name="choosecatalog">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/choosecatalog.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="keywordsearchbox">
+        <section>
+            <actions>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/KeywordSearchOptions.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://${activeApp}/template/catalog/keywordsearchbox.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="sidedeepcategory">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/SideDeepCategory.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/sidedeepcategory.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="minireorderprods">
+        <section>
+            <actions>
+                <script location="component://oshop/src/org/apache/ofbiz/ecommerce/catalog/MiniReorderProds.groovy"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/minireorderprods.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="miniassocprods">
+        <section>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/miniassocprods.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="minilastviewedcategories">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/SideDeepCategory.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/minilastviewedcategories.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="minilastviewedproducts">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://oshop/src/org/apache/ofbiz/ecommerce/catalog/MiniProductSummary.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/minilastviewedproducts.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="minilastproductsearches">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/minilastproductsearches.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="miniproductsummary">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://oshop/src/org/apache/ofbiz/ecommerce/catalog/MiniProductSummary.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/miniproductsummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="breadcrumbs">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/SideDeepCategory.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/breadcrumbs.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- =========== Top-Level and Stand-Alone Screens =========== -->
+
+    <!-- Category Screens -->
+    <screen name="category">
+        <section>
+            <actions>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="col-md-9"/>
+
+                <set field="titleProperty" value="PageTitleCategoryPage"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/Category.groovy"/>
+                <!-- Open this commented section for the demo of Layered Navigation, navigate through Gizmo and Widgets categories to see it in action.
+                <script location="component://oshop/src/org/apache/ofbiz/ecommerce/catalog/LayeredNavigation.groovy"/>
+                <set field="detailScreen" value="LayeredCategoryDetail"/>
+                 -->
+                <set field="tabButtonItem" value="LookupProductCategories"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonCategoryDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <include-screen name="newbreadcrumbs"/>
+                        <include-screen name="category-include"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="category-include">
+        <section>
+            <widgets>
+                <section>
+                    <condition>
+                        <not><if-empty field="productCategory"/></not>
+                    </condition>
+                    <widgets>
+                        <include-screen name="${detailScreen}"/>
+                    </widgets>
+                    <fail-widgets>
+                        <label style="head2">${uiLabelMap.ProductCategoryNotFoundForCategoryID} ${productCategoryId}!</label>
+                    </fail-widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="categorydetail">
+        <section>
+            <actions>
+                <set field="productsummaryScreen" value="component://oshop/widget/ProductScreens.xml#productsummary"/>
+                <set field="productCategoryLinkScreen" value="component://oshop/widget/CatalogScreens.xml#ProductCategoryLink"/>
+
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/CategoryDetail.groovy"/>
+
+                <entity-and entity-name="ProductCategoryLink" list="productCategoryLinks" use-cache="true" filter-by-date="true">
+                    <field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                    <order-by field-name="sequenceNum"/>
+                </entity-and>
+                <set field="paginateEcommerceStyle" value="N"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/categorydetail.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="categorydetailmatrix">
+        <section>
+            <actions>
+                <set field="numCol" value="3"/>
+                <set field="searchInCategory" value="N"/>
+                <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="9"/>
+            </actions>
+            <widgets>
+                <include-screen name="categorydetail"/>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="compareproductslist">
+        <section>
+            <widgets>
+                <platform-specific><html><html-template location="component://${activeApp}/template/catalog/compareproductslist.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="ProductCategoryLink">
+        <section>
+            <actions>
+                <!-- TODO/NOTE DEJ20070223: for some reason this isn't working, doing an assign within the FTL file which does work: <set field="productCategoryLink" from-field="requestAttributes.productCategoryLink"/> -->
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/ProductCategoryLink.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="lastviewedproducts">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="center"/>
+
+                <set field="titleProperty" value="PageTitleLastViewProducts"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://oshop/template/catalog/lastviewedproducts.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="detailImage">
+        <section>
+            <widgets>
+               <platform-specific><html><html-template location="component://oshop/template/catalog/detailImage.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="tellafriend">
+        <section>
+            <actions>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://oshop/template/catalog/tellafriend.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="quickadd">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="center"/>
+
+                <set field="quickaddsummaryScreen" value="component://oshop/widget/CatalogScreens.xml#quickaddsummary"/>
+
+                <set field="titleProperty" value="PageTitleQuickAdd"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/QuickAdd.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://order/webapp/ordermgr/entry/catalog/quickadd.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="quickaddsummary">
+        <section>
+            <actions>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/ProductSummary.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://order/webapp/ordermgr/entry/catalog/quickaddsummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="keywordsearch">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="MainColumnStyle" value="col-md-9"/>
+
+                <set field="productsummaryScreen" value="component://oshop/widget/ProductScreens.xml#productsummary"/>
+
+                <set field="titleProperty" value="PageTitleSearchResults"/>
+                <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="10"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/KeywordSearch.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://oshop/template/catalog/keywordsearch.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="tagsearch">
+        <section>
+            <actions>
+
+                <set field="productsummaryScreen" value="component://oshop/widget/ProductScreens.xml#productsummary"/>
+
+                <set field="titleProperty" value="PageTitleTagResults"/>
+                <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="10"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/KeywordSearch.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonSearchDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://oshop/template/catalog/tagsearch.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="advancedsearch">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="MainColumnStyle" value="col-md-9"/>
+
+                <set field="titleProperty" value="PageTitleAdvancedSearch"/>
+                <set field="headerItem" value="Advanced Search"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/AdvancedSearchOptions.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://oshop/template/catalog/advancedsearch.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="LayeredNavBar">
+        <section>
+            <actions>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/LayeredNavBar.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="LayeredCategoryDetail">
+        <section>
+            <actions>
+                <set field="productsummaryScreen" value="component://oshop/widget/ProductScreens.xml#productsummary"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/LayeredCategoryDetail.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="bestSellingCategory">
+        <section>
+            <widgets>
+                <section>
+                    <widgets>
+                        <!--<label style="h1" text="Popular Categories"/>-->
+                        <include-screen name="showBestSellingCategory"/>
+                    </widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="showBestSellingCategory">
+        <section>
+            <actions>
+                <script location="component://oshop/src/org/apache/ofbiz/ecommerce/catalog/BestSellingCategory.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/ShowBestSellingCategory.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="productCategories">
+        <section>
+            <actions>
+                <set field="tabButtonItem" value="LookupProductCategories"/>
+                
+                <script location="component://oshop/src/org/apache/ofbiz/ecommerce/catalog/ProductCategories.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/ProductCategories.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="productCategoryList">
+        <section>
+            <condition>
+                <if-empty field="parameters.mainSubmitted"/>
+            </condition>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/Category.groovy"/>
+                <set field="fromSetSessionLocale" value="${groovy: return request.getAttribute('fromSetSessionLocale');}"/>
+                <set field="visualThemeId" from-field="productStore.visualThemeId" default-value="EC_DEFAULT"/>
+                <service service-name="getVisualThemeResources">
+                    <field-map field-name="visualThemeId"/>
+                    <field-map field-name="themeResources" from-field="layoutSettings"/>
+                </service>
+                <set field="layoutSettings" from-field="themeResources" default-value="${layoutSettings}" global="true"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-compare operator="equals" value="true" field="fromSetSessionLocale"/>
+                    </condition>
+                    <widgets>
+                        <include-screen name="category"/>
+                    </widgets>
+                    <fail-widgets>
+                        <section>
+                            <condition>
+                                <if-empty field="category_id"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="newbreadcrumbs" share-scope="true"/>
+                            </widgets>
+                            <fail-widgets>
+                                <include-screen name="newbreadcrumbs" share-scope="true"/>
+                            </fail-widgets>
+                        </section>
+                        <include-screen name="category-include" share-scope="true"/>
+                    </fail-widgets>
+                </section>
+            </widgets>
+            <fail-widgets>
+                <section>
+                   <widgets>
+                        <include-screen name="category"/>
+                   </widgets>
+                </section>
+            </fail-widgets>
+        </section>
+    </screen>
+    
+    <screen name="productreview">
+        <section>
+            <actions>
+                <set field="MainColumnStyle" value="col-md-12"/>
+    
+                <set field="titleProperty" value="PageTitleProductReview"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPopUpDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://oshop/template/catalog/productreview.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="newbreadcrumbs">
+       <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://oshop/src/org/apache/ofbiz/ecommerce/catalog/ajaxbreadcrumbs.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://oshop/template/catalog/ajaxbreadcrumbs.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="populartags">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://oshop/src/org/apache/ofbiz/ecommerce/catalog/PopularTags.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://oshop/template/catalog/populartags.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+</screens>
