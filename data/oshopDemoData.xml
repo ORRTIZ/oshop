@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+(C) Copyright 2015 Somonar B.V.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ -->
+<entity-engine-xml>
+    <PartyRole partyId="Company" roleTypeId="OWNER" />
+
+    <ProdCatalog prodCatalogId="oshop-catalog" catalogName="oshop catalog"
+        purchaseAllowPermReqd="N" useQuickAdd="Y" viewAllowPermReqd="N" />
+
+    <ProductCategory productCategoryId="oshop-Promotions"
+        productCategoryTypeId="CATALOG_CATEGORY"
+        detailScreen="component://oshop/widget/CatalogScreens.xml#categorydetailmatrix" />
+
+    <ProductStore productStoreId="oshop" storeName="O Shop"
+        companyName="The O Shop" title="The O Shop"
+        subtitle="Welcome to our Bootstrap based webshop" visualThemeId="ecbootstrap"
+
+        allowPassword="Y"
+        authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or call customer service."
+        authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+        authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+        autoApproveInvoice="Y" autoApproveOrder="Y"
+        balanceResOnOrderCreation="Y" checkInventory="Y"
+        daysToCancelNonPay="30" defaultCurrencyUomId="USD"
+        defaultLocaleString="en_US" defaultSalesChannelEnumId="WEB_SALES_CHANNEL"
+        digitalItemApprovedStatus="ITEM_APPROVED" explodeOrderItems="N"
+        headerApprovedStatus="ORDER_APPROVED" headerCancelStatus="ORDER_CANCELLED"
+        headerDeclinedStatus="ORDER_REJECTED" inventoryFacilityId="WebStoreWarehouse"
+        itemApprovedStatus="ITEM_APPROVED" itemCancelStatus="ITEM_CANCELLED"
+        itemDeclinedStatus="ITEM_REJECTED" oneInventoryFacility="Y"
+        orderNumberPrefix="OS-" payToPartyId="Company"
+        prodSearchExcludeVariants="Y" prorateShipping="Y" prorateTaxes="Y"
+        reqReturnInventoryReceive="N" requireInventory="N"
+        reserveInventory="Y" reserveOrderEnumId="INVRO_FIFO_REC"
+        retryFailedAuths="Y" shipIfCaptureFails="Y"
+        showOutOfStockProducts="Y" storeCreditAccountEnumId="FIN_ACCOUNT"
+        storeCreditValidDays="90" />
+
+    <WebSite webSiteId="oshop" siteName="The O Shop"
+        productStoreId="oshop" visualThemeSetId="ECOMMERCE"
+        allowProductStoreChange="N" />
+
+    <Content contentId="oshop_Content" contentName="oshop Content Root"
+        contentTypeId="WEB_SITE_PUB_PT" description="oshop Content Root" />
+
+    <WebSiteContent contentId="oshop_Content" webSiteId="oshop"
+        fromDate="2016-01-22 17:14:36.868" webSiteContentTypeId="PUBLISH_POINT" />
+
+    <WebSiteRole webSiteId="oshop" partyId="Company"
+        roleTypeId="OWNER" fromDate="2016-03-01 00:00:00.0" />
+
+    <ProductStoreCatalog productStoreId="oshop"
+        prodCatalogId="oshop-catalog" fromDate="2016-01-22 16:09:27.388" />
+
+    <ProdCatalogCategory prodCatalogId="oshop-catalog"
+        productCategoryId="CATALOG1" prodCatalogCategoryTypeId="PCCT_BROWSE_ROOT"
+        sequenceNum="2" fromDate="2016-01-22 16:10:31.494" />
+
+    <ProdCatalogCategory prodCatalogId="oshop-catalog"
+        productCategoryId="CATALOG1_BEST_SELL"
+        prodCatalogCategoryTypeId="PCCT_BEST_SELL" sequenceNum="1"
+        fromDate="2016-01-22 16:10:07.63" />
+
+    <ProdCatalogCategory prodCatalogId="oshop-catalog"
+        productCategoryId="CATALOG1_QUICKADD1"
+        prodCatalogCategoryTypeId="PCCT_QUICK_ADD" sequenceNum="1"
+        fromDate="2016-01-22 16:10:54.831" />
+
+    <ProdCatalogCategory prodCatalogId="oshop-catalog"
+        productCategoryId="CATALOG1_QUICKADD2"
+        prodCatalogCategoryTypeId="PCCT_QUICK_ADD" sequenceNum="2"
+        fromDate="2016-01-22 16:11:04.622" />
+
+    <ProdCatalogCategory prodCatalogId="oshop-catalog"
+        productCategoryId="CATALOG1_SEARCH" prodCatalogCategoryTypeId="PCCT_SEARCH"
+        sequenceNum="1" fromDate="2016-01-22 16:11:40.437" />
+
+    <ProdCatalogCategory prodCatalogId="oshop-catalog"
+        productCategoryId="oshop-Promotions" prodCatalogCategoryTypeId="PCCT_PROMOTIONS"
+        sequenceNum="1" fromDate="2016-01-22 16:11:40.0" />
+
+    <ProductStoreFacility productStoreId="oshop"
+        facilityId="WebStoreWarehouse" fromDate="2016-01-21 13:52:45.299" />
+</entity-engine-xml>
