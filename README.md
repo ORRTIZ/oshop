@@ -1,4 +1,6 @@
-<!--- (C) Copyright 2015 Somonar B.V. -->
+<!--- © 2015 Copyright Somonar B.V. 
+<!-- This page is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/">Creative Commons Attribution-NoDerivatives 4.0 International License</a>-->
+
 
 # oshop
 Ecommerce component developed for a bootstrap based theme (e.g. ecbootstrap) for Apache OFBiz™ and ORRTIZ™.
@@ -15,4 +17,9 @@ Instructions on how to implement can be found here: [https://github.com/ORRTIZ/o
 
 ##Issues
 For an overview of open and closed issue, see: [https://github.com/ORRTIZ/oshop/issues](https://github.com/ORRTIZ/oshop/issues)
+
+## License
+© 2015 Copyright Somonar B.V.
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png" /></a><br />This page is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/">Creative Commons Attribution-NoDerivatives 4.0 International License</a>.
 
