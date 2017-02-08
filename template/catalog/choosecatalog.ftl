@@ -22,14 +22,11 @@ under the License.
 
 <#-- Only show if there is more than 1 (one) catalog, no sense selecting when there is only one option... -->
 <#if (catalogCol?size > 1)>
-<div id ="choosecatalog" class="screenlet">
-  <div class="screenlet-title-bar">
-    <ul>
-      <li class="h3">${uiLabelMap.ProductChooseCatalog}</li>
-    </ul>
-    <br class="clear"/>
+<div id ="choosecatalog" class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">${uiLabelMap.ProductChooseCatalog}</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="panel-body">
     <form name="choosecatalogform" method="post" action="<@ofbizUrl>main</@ofbizUrl>">
       <select name='CURRENT_CATALOG_ID' class='selectBox' onchange="submit()">
         <option value='${currentCatalogId}'>${currentCatalogName}</option>
