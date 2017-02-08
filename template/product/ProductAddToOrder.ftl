@@ -17,7 +17,6 @@
 <div id="addItemForm">
     <form method="post" action="<@ofbizUrl>additem</@ofbizUrl>" name="addform" style="margin: 0;">
         <fieldset>
-            ${productStoreId}
             <#assign inStock = true />
             <#--
             <#assign commentEnable = Static["org.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("order", "order.item.comment.enable", delegator)>
