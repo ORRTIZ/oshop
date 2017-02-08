@@ -38,7 +38,7 @@
   <#if wrapInBox == "Y">
     <div  id="sidedeepcategory" class="panel panel-default">
       <div class="panel-heading">
-          <h3 class="panel-title"><#if categoryDescription?has_content>${categoryDescription}<#else>${categoryName?default("")}</#if></h3>
+        <h3 class="panel-title"><#if categoryDescription?has_content>${categoryDescription}<#else>${categoryName?default("")}</#if></h3>
         <br class="clear"/>
       </div>
       <div class="panel-body">
